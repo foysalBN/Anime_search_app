@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
 import Animes from './Animes';
+import { Pagination } from '@mui/material';
 
 export interface IAnimes {
     mal_id: number,
@@ -45,6 +46,11 @@ const Search = () => {
             <SearchBar query={query} setQuery={setQuery} />
             <Animes animes={animes} />
 
+            {pageCount !== 0 && <Pagination
+                count={pageCount}
+                onChange={(e, page) => setPage(page)}
+                sx={{ my: 3, display: 'flex', justifyContent: 'center' }}
+            />}
         </Box>
     );
 };
