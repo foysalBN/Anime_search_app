@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -32,6 +32,15 @@ const Details = () => {
 
     }, [])
 
+    // return ciriular Progress if data is fetched yet
+    if (!anime) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: "center", height: "80vh" }}>
+                <CircularProgress />
+            </Box>
+        )
+    }
+
     return (
         <Box sx={{ maxWidth: "1200px", mx: "auto", px: '3em' }} >
             <Grid container spacing={2} >
@@ -42,12 +51,12 @@ const Details = () => {
                     <Typography variant="h5" >Synopsis</Typography>
                     <Typography>{anime?.synopsis}</Typography>
 
-                    {anime && <Box sx={{ display: "flex", my: 2 }} >
+                    <Box sx={{ display: "flex", my: 2 }} >
                         <InfoBox name={`${anime?.scored_by} users`} value={anime?.score} colorIndex={0} />
                         <InfoBox name="RANKLED" value={`# ${anime?.rank}`} colorIndex={1} />
                         <InfoBox name="POPULARITY" value={`# ${anime?.popularity}`} colorIndex={2} />
                         <InfoBox name="MEMBERS" value={anime?.members} colorIndex={3} />
-                    </Box>}
+                    </Box>
                 </Grid>
             </Grid>
             <Link to='/'>
