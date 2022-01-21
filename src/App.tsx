@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Search from './components/Search';
 import Details from './components/Details';
 import axios from 'axios';
+import Header from './components/Header';
 
 export interface IAnimes {
   mal_id: number,
@@ -23,6 +24,10 @@ function App() {
   const [animes, setAnimes] = useState<IAnimes[]>([]);
   const [pageCount, setPageCount] = useState(0)
   let api = `https://api.jikan.moe/v4/anime?sfw=1&q=${query}&limit=20&page=${page}`;
+
+  useEffect(() => {
+    setPage(1)
+  }, [query])
 
   useEffect(() => {
     if (!query) {
@@ -53,6 +58,7 @@ function App() {
 
     <div className="App">
       <Router>
+        <Header />
         <Routes>
           <Route
             path='/'

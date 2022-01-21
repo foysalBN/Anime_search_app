@@ -22,7 +22,7 @@ const Search: React.FC<IProps> = ({ query, setQuery, animes, pageCount, page, se
 
             {pageCount !== 0 && <Pagination
                 count={pageCount}
-                defaultPage={page}
+                page={page}
                 onChange={(e, page) => setPage(page)}
                 sx={{ my: 3, display: 'flex', justifyContent: 'center' }}
             />}
