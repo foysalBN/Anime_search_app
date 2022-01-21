@@ -21,6 +21,7 @@ const SearchBar: React.FC<IProps> = ({ query, setQuery }) => {
                 placeholder='Search...'
                 variant="outlined"
                 size='small'
+                defaultValue={query}
                 onChange={debouncedOnChange}
                 sx={{
                     width: 1,

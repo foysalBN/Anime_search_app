@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 import Anime from './Anime';
-import { IAnimes } from '../components/Search'
+import { IAnimes } from '../App'
 
 interface IProps {
     animes: IAnimes[]
