@@ -25,6 +25,7 @@ function App() {
   const [pageCount, setPageCount] = useState(0)
   let api = `https://api.jikan.moe/v4/anime?sfw=1&q=${query}&limit=20&page=${page}`;
 
+  // reset page when query changes
   useEffect(() => {
     setPage(1)
   }, [query])
@@ -40,7 +41,6 @@ function App() {
         const { pagination, data } = res.data;
         setPageCount(pagination?.last_visible_page)
         setAnimes(data)
-        console.log(res.data)
       })
       .catch(e => console.log('Got an error fetching data', e))
   }, [query, page, api])
@@ -60,10 +60,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route
-            path='/'
-            element={<Search {...searchProps} />}
-          />
+          <Route path='/' element={<Search {...searchProps} />} />
           <Route path='/anime/:id' element={<Details />} />
 
         </Routes>

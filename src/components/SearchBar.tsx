@@ -10,7 +10,6 @@ interface IProps {
 
 const SearchBar: React.FC<IProps> = ({ query, setQuery }) => {
     const updateQueru = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value)
         setQuery(e.target.value);
     }
     const debouncedOnChange = debounce(updateQueru, 200);
