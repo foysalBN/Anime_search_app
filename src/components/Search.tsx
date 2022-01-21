@@ -2,6 +2,7 @@ import { Box } from '@mui/system';
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import Animes from './Animes';
 
 export interface IAnimes {
     mal_id: number,
@@ -42,6 +43,7 @@ const Search = () => {
     return (
         <Box sx={{ maxWidth: "1200px", mx: "auto", px: '3em' }} >
             <SearchBar query={query} setQuery={setQuery} />
+            <Animes animes={animes} />
 
         </Box>
     );
