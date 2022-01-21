@@ -18,8 +18,8 @@ const Search: React.FC<IProps> = ({ query, setQuery, animes, pageCount, page, se
     return (
         <Box sx={{ maxWidth: "1200px", mx: "auto", px: '3em' }} >
             <SearchBar query={query} setQuery={setQuery} />
+            {!query && <p>Find your favourite anime....</p>}
             <Animes animes={animes} />
-
             {pageCount !== 0 && <Pagination
                 count={pageCount}
                 page={page}
